@@ -10,5 +10,5 @@ export default async function subscribeAPI(req, res) {
   }) 
   console.log(JSON.stringify(response))
   
-  res.redirect('/')
+  res.status(201).redirect("/")
 }
