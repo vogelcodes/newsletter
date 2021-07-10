@@ -1,9 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default function subscribeAPI(req, res) {
+import { supabase } from "../../services/supabase";
+
+export default async function subscribeAPI(req, res) {
 
   const date = new Date();
-  console.log(req.body)
+  const response = await supabase.from('leads').insert({
+    email: req.body.email
+  }) 
+  console.log(JSON.stringify(response))
   
-  res.status(200).json({ name: 'John Doe'})
+  res.redirect('/')
 }
